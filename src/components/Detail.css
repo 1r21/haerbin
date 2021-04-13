@@ -1,0 +1,17 @@
+.detail {
+  width: 100%;
+  padding-bottom: 100px;
+}
+.title {
+  font-weight: bolder;
+}
+.text {
+  color: #333;
+}
+
+.audio {
+  position: fixed;
+  bottom: 0;
+  width: 1000px;
+  outline: none;
+}
