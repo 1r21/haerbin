@@ -9,10 +9,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const { REACT_APP_API } = process.env;
+const { REACT_APP_URL } = process.env;
 
 const client = new ApolloClient({
-  uri: `${REACT_APP_API}/graphql`,
+  uri: `${REACT_APP_URL}/graphql`,
   cache: new InMemoryCache(),
 });
 
