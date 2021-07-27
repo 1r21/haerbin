@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main # Set a branch name to trigger deployment
+      - apollo-react # Set a branch name to trigger deployment
 
 jobs:
   deploy:
