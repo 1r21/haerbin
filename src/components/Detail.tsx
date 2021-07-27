@@ -4,9 +4,11 @@ import { getNewsById, News } from "../services";
 import { Text, parseText } from "../utils";
 
 import "./Detail.css";
+import Loading from "./Loading";
 
 export default function Detail() {
   let { id } = useParams<{ id: string }>();
+  const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState<News>();
   const [texts, setTexts] = useState<Text[]>([]);
 
@@ -16,9 +18,13 @@ export default function Detail() {
       setArticle(news);
       const formatTexts = parseText(news.transcript);
       setTexts(formatTexts);
+      setLoading(false);
     };
+    setLoading(true);
     getArticle();
   }, [id]);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="detail">
