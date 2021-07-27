@@ -2,14 +2,12 @@ import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { News } from "../services";
 import { parseText } from "../utils";
-
+import Loading from "./Loading";
 import "./Detail.css";
 
 const Get_Detail = gql`
   query Detail($id: String!) {
     article(id: $id) {
-      title
-      date
       source
       src
       transcript
@@ -29,11 +27,11 @@ export default function Detail() {
     }
   );
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>{`Error ${error}`}</p>;
 
   const texts = parseText(data!.article.transcript);
-
+  const article = data!.article;
   return (
     <div className="detail">
       <div>
@@ -45,9 +43,7 @@ export default function Detail() {
           );
         })}
       </div>
-      {data!.article.source && (
-        <audio controls src={data!.article.src} className="audio" />
-      )}
+      {article.source && <audio controls src={article.src} className="audio" />}
     </div>
   );
 }
