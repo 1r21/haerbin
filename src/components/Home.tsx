@@ -1,21 +1,29 @@
-import { useEffect, useState } from "react";
-import { getNews, News } from "../services";
+import { useQuery, gql } from "@apollo/client";
+import { News } from "../services";
 
 import Article from "./Article";
 import "./Home.css";
 
+const GET_ARTICLES = gql`
+  query GetArticles {
+    list {
+      id
+      cover
+      title
+      date
+    }
+  }
+`;
+
 export default function Home() {
-  const [articles, setArticles] = useState<News[]>([]);
-  useEffect(() => {
-    const fetch = async () => {
-      const { list } = await getNews();
-      setArticles(list);
-    };
-    fetch();
-  }, []);
+  const { loading, error, data } = useQuery<{ list: News[] }>(GET_ARTICLES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{`Error ${error}`}</p>;
+
   return (
     <ul className="home">
-      {articles.map((item) => (
+      {data!.list.map((item) => (
         <li className="article-wrap" key={item.id}>
           <Article {...item} />
         </li>

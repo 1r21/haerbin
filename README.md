@@ -1,1 +1,1 @@
-## A React client for Taishan
+## A React client for Taishan (use apollo-client)

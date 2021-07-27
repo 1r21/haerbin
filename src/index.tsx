@@ -1,17 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
 import "normalize.css/normalize.css";
 // import "tailwindcss/tailwind.css"
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
+
+const { REACT_APP_API } = process.env;
+
+const client = new ApolloClient({
+  uri: `${REACT_APP_API}/graphql`,
+  cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <App />
+      </Router>
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
