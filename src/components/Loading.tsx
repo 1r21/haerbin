@@ -5,7 +5,7 @@ const style = {
   height: 400,
 };
 
-export default function () {
+export default function Loading() {
   return (
     <div style={style}>
       <LoadingSvg />
