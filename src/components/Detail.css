@@ -2,14 +2,14 @@
   width: 100%;
   padding-bottom: 100px;
 }
-.title {
+.detail .title {
   font-weight: bolder;
 }
-.text {
+.detail .text {
   color: #333;
 }
 
-.audio {
+.detail .audio {
   position: fixed;
   bottom: 0;
   width: 1000px;

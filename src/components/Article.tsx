@@ -5,7 +5,7 @@ import "./Article.css";
 
 export default function Article({ id, cover, title, date }: News) {
   return (
-    <Link to={`/detail/${id}`} className="article-wrap">
+    <Link to={`/detail/${id}`} className="article-content">
       <div className="cover-wrap">
         <img src={cover} alt={title} />
       </div>
