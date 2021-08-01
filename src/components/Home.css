@@ -1,7 +1,35 @@
+.home-wrap {
+  height: 100%;
+}
+.home-wrap .canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 .home {
   display: flex;
   flex-wrap: wrap;
 }
+
+.slide-btn {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide-btn > span {
+  padding: 10px;
+  cursor: pointer;
+}
+
 .article-wrap {
   display: block;
   width: 180px;

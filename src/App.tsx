@@ -4,16 +4,14 @@ import Detail from "./components/Detail";
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/detail/:id">
-          <Detail />
-        </Route>
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
+      <Route path="/detail/:id">
+        <Detail />
+      </Route>
+    </Switch>
   );
 }
 

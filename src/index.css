@@ -5,15 +5,27 @@
 html,
 body {
   width: 1000px;
+  height: 100%;
   margin: 0 auto;
 }
+
+#root {
+  height: 100%;
+}
+
 ul,
 li {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 a {
   color: #333;
   text-decoration: none;
+}
+
+.iconfont {
+  fill: currentColor;
+  overflow: hidden;
 }
