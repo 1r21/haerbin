@@ -56,17 +56,50 @@ export default function Home() {
 
   useEffect(() => {
     const [app, imagesContainer] = initPixiApp();
+    addGithubLink(app);
+    addBgSprites(imagesContainer);
+    addDisplacementFilter(app);
+  }, []);
 
+  function initPixiApp(): [PIXI.Application, PIXI.Container] {
+    const app = new PIXI.Application({
+      view: canvasRef.current!,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      backgroundColor: 0xcccccc,
+    });
+    const imagesContainer = new PIXI.Container();
+    app.stage.addChild(imagesContainer);
+    return [app, imagesContainer];
+  }
+
+  function addGithubLink(app: PIXI.Application) {
+    const github = PIXI.Sprite.from(
+      "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+    );
+    app.stage.addChild(github);
+    github.scale.set(0.05, 0.05);
+    github.position.set(app.renderer.width - github.width * 2, 10);
+    github.buttonMode = true;
+    github.interactive = true;
+    github.on("pointerdown", () => {
+      window.open("https://github.com/1r21/haerbin", "_blank");
+    });
+  }
+
+  function addBgSprites(container: PIXI.Container) {
     [bg01, bg02, bg03].forEach((bs, index) => {
       const texture = PIXI.Texture.from(bs);
       const image = new PIXI.Sprite(texture);
       if (index !== 0) {
         gsap.set(image, { alpha: 0 });
       }
-      imagesContainer.addChild(image);
+      container.addChild(image);
     });
-    setSprites(imagesContainer.children as PIXI.Sprite[]);
+    setSprites(container.children as PIXI.Sprite[]);
+  }
 
+  function addDisplacementFilter(app: PIXI.Application) {
     const displacementSprite = PIXI.Sprite.from(effectImage);
     displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
     displacementSprite.anchor.set(0.5);
@@ -86,18 +119,6 @@ export default function Home() {
 
     setDisplacementSprite(displacementSprite);
     setDisplacementFilter(displacementFilter);
-  }, []);
-
-  function initPixiApp(): [PIXI.Application, PIXI.Container] {
-    const app = new PIXI.Application({
-      view: canvasRef.current!,
-      width: 1920,
-      height: 1080,
-      backgroundColor: 0xcccccc,
-    });
-    const imagesContainer = new PIXI.Container();
-    app.stage.addChild(imagesContainer);
-    return [app, imagesContainer];
   }
 
   function slideHandle(index: number) {
