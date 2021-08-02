@@ -42,6 +42,12 @@ export default function Detail() {
             </p>
           );
         })}
+        <p className="source">
+          from:
+          <a href={article.source} rel="noreferrer" target="_blank">
+            pbs
+          </a>
+        </p>
       </div>
       {article.source && <audio controls src={article.src} className="audio" />}
     </div>
