@@ -23,6 +23,7 @@
   transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
+  z-index: -1;
 }
 
 .slide-btn > span {

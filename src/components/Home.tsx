@@ -103,7 +103,6 @@ export default function Home() {
   function slideHandle(index: number) {
     const tl = gsap.timeline({
       onComplete() {
-        console.log("index===", index);
         setCurrentIndex(index);
       },
       onUpdate() {
