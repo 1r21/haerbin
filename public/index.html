@@ -21,6 +21,17 @@
     <script src="//at.alicdn.com/t/font_2188556_kjx5dz47yyi.js"></script>
     <script src="%PUBLIC_URL%/redirect.js"></script>
     <title>I Believe</title>
+    <script>
+      (function () {
+        var { userAgent: ua } = navigator;
+        var isMobile = ["Android", "iPhone", "iPad", "iPod"].some(
+          (m) => ua.indexOf(m) > -1
+        );
+        if (isMobile) {
+          location.href = "http://ai.1r21.cn";
+        }
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
