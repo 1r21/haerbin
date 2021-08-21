@@ -27,7 +27,7 @@ jobs:
 
       - name: Build
         env:
-          REACT_APP_API: ${{ secrets.REACT_APP_API }}
+          REACT_APP_API_URL: ${{ secrets.API_URL }}
         run: |
           yarn
           yarn build

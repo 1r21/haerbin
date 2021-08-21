@@ -1,6 +1,6 @@
 import axios from "axios";
-const { REACT_APP_API = "/api" } = process.env;
-axios.defaults.baseURL = REACT_APP_API;
+const { REACT_APP_API_URL } = process.env;
+axios.defaults.baseURL = REACT_APP_API_URL + '/api';
 // axios.defaults.headers.common['X-Token'] = AUTH_TOKEN;
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
