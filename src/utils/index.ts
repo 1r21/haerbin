@@ -32,7 +32,7 @@ export type Text = {
   value: string;
 };
 
-export function parseText(article: string): Text[] {
+export function parseText(article = "Not prepare yet."): Text[] {
   let content = article.replace(/(\r\n|\n|\r)/gm, "");
   for (let key in entities) {
     const re = new RegExp("&" + key + ";", "g");

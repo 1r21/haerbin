@@ -15,12 +15,12 @@ const Get_Detail = gql`
   }
 `;
 
-type AritcleDataa = { article: News };
+type AritcleData = { article: News };
 type AritcleVars = { id: Required<string> };
 
 export default function Detail() {
   let { id } = useParams<{ id: string }>();
-  const { loading, error, data } = useQuery<AritcleDataa, AritcleVars>(
+  const { loading, error, data } = useQuery<AritcleData, AritcleVars>(
     Get_Detail,
     {
       variables: { id },
@@ -30,8 +30,8 @@ export default function Detail() {
   if (loading) return <Loading />;
   if (error) return <p>{`Error ${error}`}</p>;
 
-  const texts = parseText(data!.article.transcript);
   const article = data!.article;
+  const texts = parseText(article.transcript);
   return (
     <div className="detail">
       <div>
