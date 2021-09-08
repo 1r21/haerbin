@@ -1,3 +1,4 @@
+import { News } from "../services";
 import entities from "./entities";
 
 export function formatPlayTime(seconds: number) {
@@ -7,12 +8,6 @@ export function formatPlayTime(seconds: number) {
   const min = parseInt(String(seconds / 60));
   const sec = parseInt(String(seconds % 60));
   return `${min < 10 ? "0" : ""}${min}:${sec < 10 ? "0" : ""}${sec}`;
-}
-
-declare global {
-  interface Window {
-    dd: any;
-  }
 }
 
 export function changeTitle(title: string) {
@@ -32,8 +27,20 @@ export type Text = {
   value: string;
 };
 
-export function parseText(article = "Not prepare yet."): Text[] {
-  let content = article.replace(/(\r\n|\n|\r)/gm, "");
+// rawhtml = null, default value is invalid
+export function parseText(rawhtml: News["transcript"]): Text[] {
+  const nullText: Text = {
+    idx: 1,
+    type: 'text',
+    value: "Not prepare yet."
+  }
+  
+  if (!rawhtml) {
+    return [nullText]
+  }
+
+  let content = rawhtml.replace(/(\r\n|\n|\r)/gm, "");
+
   for (let key in entities) {
     const re = new RegExp("&" + key + ";", "g");
     content = content.replace(re, entities[key]);
@@ -58,5 +65,5 @@ export function parseText(article = "Not prepare yet."): Text[] {
       };
     });
   }
-  return [];
+  return [nullText];
 }

@@ -16,10 +16,10 @@ const Get_Detail = gql`
 `;
 
 type AritcleData = { article: News };
-type AritcleVars = { id: Required<string> };
+type AritcleVars = Pick<News, "id">;
 
 export default function Detail() {
-  let { id } = useParams<{ id: string }>();
+  let { id } = useParams<AritcleVars>();
   const { loading, error, data } = useQuery<AritcleData, AritcleVars>(
     Get_Detail,
     {
