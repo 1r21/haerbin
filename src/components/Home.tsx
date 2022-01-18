@@ -6,7 +6,6 @@ import { DisplacementFilter } from "@pixi/filter-displacement";
 import { useQuery, gql } from "@apollo/client";
 
 import { News } from "../services";
-import { throttle } from "../utils";
 import { Icon } from "./Icon";
 import Article from "./Article";
 import Loading from "./Loading";
@@ -56,16 +55,15 @@ export default function Home() {
   const [displacementFilter, setDisplacementFilter] = useState<DisplacementFilter>();
 
   useEffect(() => {
+    function setup(w: number, h: number) {
+      const [app, imagesContainer] = initPixiApp(w, h);
+
+      addGithubLink(app);
+      addBgSprites(imagesContainer);
+      addDisplacementFilter(app);
+    }
     setup(window.innerWidth, window.innerHeight);
   }, []);
-
-  function setup(w: number, h: number) {
-    const [app, imagesContainer] = initPixiApp(w, h);
-
-    addGithubLink(app);
-    addBgSprites(imagesContainer);
-    addDisplacementFilter(app);
-  }
 
   function initPixiApp(
     width: number,
