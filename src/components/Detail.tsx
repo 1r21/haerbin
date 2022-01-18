@@ -3,7 +3,6 @@ import { useQuery, gql } from "@apollo/client";
 import { News } from "../services";
 import { parseText } from "../utils";
 import Loading from "./Loading";
-import "./Detail.css";
 
 const Get_Detail = gql`
   query Detail($id: String!) {
@@ -16,7 +15,7 @@ const Get_Detail = gql`
 `;
 
 type AritcleData = { article: News };
-type AritcleVars = Pick<News, "id">;
+type AritcleVars = Partial<Pick<News, "id">>;
 
 export default function Detail() {
   let { id } = useParams<AritcleVars>();
@@ -33,23 +32,34 @@ export default function Detail() {
   const article = data!.article;
   const texts = parseText(article.transcript);
   return (
-    <div className="detail">
+    <div className="w-3/5 mx-auto pb-[100px]">
       <div>
-        {texts.map(({ idx, type, value }) => {
+        {texts.map(({ idx, style, value }) => {
           return (
-            <p className={type} key={idx}>
+            <p style={{ ...style }} key={idx} className="my-2">
               {value}
             </p>
           );
         })}
-        <p className="source">
+        <p className="text-right">
           from:
-          <a href={article.source} rel="noreferrer" target="_blank">
+          <a
+            href={article.source}
+            rel="noreferrer"
+            target="_blank"
+            className=" text-blue-500 italic underline"
+          >
             pbs
           </a>
         </p>
       </div>
-      {article.source && <audio controls src={article.src} className="audio" />}
+      {article.source && (
+        <audio
+          controls
+          src={article.src}
+          className="fixed bottom-2 w-3/5 outline-none"
+        />
+      )}
     </div>
   );
 }

@@ -1,13 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-import "normalize.css/normalize.css";
-// import "tailwindcss/tailwind.css"
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -19,9 +16,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Router>
-        <App />
-      </Router>
+      <App />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

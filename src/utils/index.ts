@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { News } from "../services";
 import entities from "./entities";
 
@@ -24,17 +25,27 @@ export function changeTitle(title: string) {
 export type Text = {
   idx: number;
   type: "title" | "text";
+  style: CSSProperties,
   value: string;
 };
 
 // rawhtml = null, default value is invalid
 export function parseText(rawhtml: News["transcript"]): Text[] {
+  const textStyle = {
+    color: '#555',
+  }
+
+  const titleStyle = {
+    fontWeight: 'bolder'
+  }
+
   const nullText: Text = {
     idx: 1,
     type: 'text',
+    style: textStyle,
     value: "Not prepare yet."
   }
-  
+
   if (!rawhtml) {
     return [nullText]
   }
@@ -55,15 +66,28 @@ export function parseText(rawhtml: News["transcript"]): Text[] {
         return {
           idx: index,
           type: "title",
+          style: titleStyle,
           value: item.replace(tRe, "$1"),
         };
       }
       return {
         idx: index,
         type: "text",
+        style: textStyle,
         value: item.replace(/<p[^>]*>(.*?)<\/p>/g, "$1"),
       };
     });
   }
   return [nullText];
+}
+
+export function throttle(fn: Function, delay = 300) {
+  let last = Date.now();
+  return (...args: any) => {
+    const now = Date.now();
+    if (now - last >= delay) {
+      fn(...args)
+      last = Date.now()
+    }
+  }
 }
