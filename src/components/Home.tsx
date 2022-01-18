@@ -6,10 +6,11 @@ import { DisplacementFilter } from "@pixi/filter-displacement";
 import { useQuery, gql } from "@apollo/client";
 
 import { News } from "../services";
+import { throttle } from "../utils";
 import { Icon } from "./Icon";
 import Article from "./Article";
 import Loading from "./Loading";
-import "./Home.css";
+
 import bg01 from "../assets/bg/bg01.jpg";
 import bg02 from "../assets/bg/bg02.jpg";
 import bg03 from "../assets/bg/bg03.jpg";
@@ -36,9 +37,9 @@ function ArticleList() {
   if (error) return <p>{`Error ${error}`}</p>;
 
   return (
-    <ul className="home">
+    <ul className="flex flex-wrap">
       {data!.list.map((item) => (
-        <li className="article-wrap" key={item.id}>
+        <li className="w-1/5 p-2" key={item.id}>
           <Article {...item} />
         </li>
       ))}
@@ -55,21 +56,34 @@ export default function Home() {
   const [displacementFilter, setDisplacementFilter] = useState<DisplacementFilter>();
 
   useEffect(() => {
-    const [app, imagesContainer] = initPixiApp();
+    setup(window.innerWidth, window.innerHeight);
+  }, []);
+
+  function setup(w: number, h: number) {
+    const [app, imagesContainer] = initPixiApp(w, h);
+
     addGithubLink(app);
     addBgSprites(imagesContainer);
     addDisplacementFilter(app);
-  }, []);
+  }
 
-  function initPixiApp(): [PIXI.Application, PIXI.Container] {
+  function initPixiApp(
+    width: number,
+    height: number
+  ): [PIXI.Application, PIXI.Container] {
     const app = new PIXI.Application({
       view: canvasRef.current!,
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width,
+      height,
       backgroundColor: 0xcccccc,
     });
     const imagesContainer = new PIXI.Container();
+
+    app.view.style.width = `${width}px`;
+    app.view.style.height = `${height}px`;
+
     app.stage.addChild(imagesContainer);
+
     return [app, imagesContainer];
   }
 
@@ -158,10 +172,14 @@ export default function Home() {
   }
 
   return (
-    <div className="home-wrap">
-      <canvas ref={canvasRef} className="canvas" />
-      <div className="slide-btn">
+    <div className="w-9/12 h-full mx-auto">
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 right-0 bottom-0 -z-10"
+      />
+      <div className="fixed left-0 right-0 top-1/2 flex justify-between -z-10 -translate-y-1/2">
         <span
+          className="p-2 cursor-pointer"
           onClick={() => {
             if (currentIndex > 0 && currentIndex < sprites.length) {
               slideHandle(currentIndex - 1);
@@ -173,6 +191,7 @@ export default function Home() {
           <Icon type="left" color="#fff" />
         </span>
         <span
+          className="p-2 cursor-pointer"
           onClick={() => {
             if (currentIndex < sprites.length - 1) {
               slideHandle(currentIndex + 1);
