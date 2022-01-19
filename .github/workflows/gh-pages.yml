@@ -2,9 +2,6 @@ name: Deploy TO GH-PAGES
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main # Set a branch name to trigger deployment
 
 jobs:
   deploy:
