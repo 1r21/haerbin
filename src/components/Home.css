@@ -1,9 +1,0 @@
-.home {
-  display: flex;
-  flex-wrap: wrap;
-}
-.article-wrap {
-  display: block;
-  width: 180px;
-  padding: 10px;
-}

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getNewsById, News } from "../services";
 import { Text, parseText } from "../utils";
 
-import "./Detail.css";
 import Loading from "./Loading";
 
 export default function Detail() {
@@ -27,18 +26,33 @@ export default function Detail() {
   if (loading) return <Loading />;
 
   return (
-    <div className="detail">
+    <div className="w-3/5 mx-auto pb-[100px]">
       <div>
-        {texts.map(({ idx, type, value }) => {
+        {texts.map(({ idx, style, value }) => {
           return (
-            <p className={type} key={idx}>
+            <p style={{ ...style }} key={idx} className="my-2">
               {value}
             </p>
           );
         })}
+        <p className="text-right">
+          from:
+          <a
+            href={article?.source}
+            rel="noreferrer"
+            target="_blank"
+            className=" text-blue-500 italic underline"
+          >
+            pbs
+          </a>
+        </p>
       </div>
       {article?.source && (
-        <audio controls src={article.src} className="audio" />
+        <audio
+          controls
+          src={article.src}
+          className="fixed bottom-2 w-3/5 outline-none"
+        />
       )}
     </div>
   );
