@@ -2,5 +2,5 @@
 
 ## dev
 
-- rename `.example.env` to `.env`
-- run `yarn start`
+- rename `.env.example` to `.env.local`
+- run `yarn dev`

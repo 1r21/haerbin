@@ -14,7 +14,7 @@ export default function Detail() {
 
   useEffect(() => {
     const getArticle = async () => {
-      const news = await getNewsById(id);
+      const news = await getNewsById(id!);
       setArticle(news);
       const formatTexts = parseText(news.transcript);
       setTexts(formatTexts);

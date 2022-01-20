@@ -1,4 +1,4 @@
-import { ReactComponent as LoadingSvg } from "../assets/loading.svg";
+import LoadingSvg from "../assets/loading.svg?component"; 
 
 const style = {
   display: "flex",
