@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getNewsById, News } from "../services";
-import { Text, parseText } from "../utils";
+import { getNewsById, News, Text, parseText } from "@1r21/youyihe";
 
 import Loading from "./Loading";
 
@@ -30,7 +29,7 @@ export default function Detail() {
       <div>
         {texts.map(({ idx, style, value }) => {
           return (
-            <p style={{ ...style }} key={idx} className="my-2">
+            <p key={idx} className="my-2">
               {value}
             </p>
           );

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-
-import { News } from "../services";
+import { News } from "@1r21/youyihe";
 
 export default function Article({ id, cover, title, date }: News) {
   return (

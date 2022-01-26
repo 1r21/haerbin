@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getNews, News } from "../services";
+import { getNews, News } from "@1r21/youyihe";
 
 import Article from "./Article";
 import Loading from "./Loading";
@@ -7,14 +7,15 @@ import Loading from "./Loading";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState<News[]>([]);
+
   useEffect(() => {
     const fetch = async () => {
+      setLoading(true);
       const { list } = await getNews();
-      console.log('🚀 ~ file: Home.tsx ~ line 13 ~ fetch ~ list', list)
       setArticles(list);
       setLoading(false);
     };
-    setLoading(true);
+
     fetch();
   }, []);
 
