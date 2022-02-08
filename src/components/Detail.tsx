@@ -29,7 +29,7 @@ export default function Detail() {
       <div>
         {texts.map(({ idx, style, value }) => {
           return (
-            <p key={idx} className="my-2">
+            <p key={idx} className="my-2" style={style}>
               {value}
             </p>
           );
