@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
-import { News } from "../services";
-import { parseText } from "../utils";
+import { News } from "@1r21/types";
+import { parseText } from "@1r21/util";
 import Loading from "./Loading";
 
 const Get_Detail = gql`
