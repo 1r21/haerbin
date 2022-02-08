@@ -2,6 +2,18 @@
 # yarn lockfile v1
 
 
+"@1r21/types@0.0.1", "@1r21/types@^0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@1r21/types/0.0.1/fc28402b7eedcdf947697dad5abf6129c57b170cd0b535e62835ee280a981583#7c36c79d5b6c8f5a7b707d3ce187592344ac6d5e"
+  integrity sha512-7EpRKeI3BFAYazHK0eWYbCRNahwe1m4HSx3ONdzpihab+XFsgXNN5WfYxFHZHynG8TDDIW0ms39y1ZadlijVUQ==
+
+"@1r21/util@^0.0.1":
+  version "0.0.1"
+  resolved "https://npm.pkg.github.com/download/@1r21/util/0.0.1/9e90ce0d9f603038317bd5482c9d0f5ff17325f8262fee1a9d1158fe01ca89e7#9d0cf438905f3fc9d61c992041c90cdee57b62c6"
+  integrity sha512-/EwthrvyWeCbSATaIrFXnJeLXwpQ6kSqZqd6NumrUDK5sGMbmjhFjaz6c7kfmE8P+OnBozu5FG1GPiyzWhWsBw==
+  dependencies:
+    "@1r21/types" "0.0.1"
+
 "@apideck/better-ajv-errors@^0.3.1":
   version "0.3.2"
   resolved "https://registry.npmmirror.com/@apideck/better-ajv-errors/download/@apideck/better-ajv-errors-0.3.2.tgz#cd6d3814eda8aee38ee2e3fa6457be43af4f8361"

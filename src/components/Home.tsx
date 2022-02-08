@@ -4,8 +4,8 @@ import { gsap, Power1, Power2 } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin";
 import { DisplacementFilter } from "@pixi/filter-displacement";
 import { useQuery, gql } from "@apollo/client";
+import { News } from "@1r21/types";
 
-import { News } from "../services";
 import { Icon } from "./Icon";
 import Article from "./Article";
 import Loading from "./Loading";
