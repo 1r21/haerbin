@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getNews, News } from "@1r21/youyihe";
+import { News, getNews } from "@1r21/api-h5";
 
 import Article from "./Article";
 import Loading from "./Loading";
