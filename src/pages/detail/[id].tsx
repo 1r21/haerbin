@@ -1,32 +1,20 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { type GetServerSidePropsContext } from "next";
+import Head from "next/head";
 import { getNewsById, News } from "@1r21/api-h5";
 import { Text, parseText } from "@1r21/util";
 
-import Loading from "./Loading";
-
-export default function Detail() {
-  let { id } = useParams<{ id: string }>();
-  const [loading, setLoading] = useState(false);
-  const [article, setArticle] = useState<News>();
-  const [texts, setTexts] = useState<Text[]>([]);
-
-  useEffect(() => {
-    const getArticle = async () => {
-      const news = await getNewsById(id!);
-      setArticle(news);
-      const formatTexts = parseText(news.transcript);
-      setTexts(formatTexts);
-      setLoading(false);
-    };
-    setLoading(true);
-    getArticle();
-  }, [id]);
-
-  if (loading) return <Loading />;
-
+export default function Detail({
+  article,
+  texts,
+}: {
+  article: News;
+  texts: Text[];
+}) {
   return (
     <div className="w-3/5 mx-auto pb-[100px]">
+      <Head>
+        <title>{article.title}</title>
+      </Head>
       <div>
         {texts.map(({ idx, style, value }) => {
           return (
@@ -41,7 +29,7 @@ export default function Detail() {
             href={article?.source}
             rel="noreferrer"
             target="_blank"
-            className=" text-blue-500 italic underline"
+            className="text-blue-500 italic underline"
           >
             pbs
           </a>
@@ -56,4 +44,14 @@ export default function Detail() {
       )}
     </div>
   );
+}
+
+export async function getServerSideProps(
+  context: GetServerSidePropsContext<{ id: string }>
+) {
+  const { params } = context;
+  const article = await getNewsById(params?.id!);
+  const formatTexts = parseText(article.transcript);
+  // Pass data to the page via props
+  return { props: { article, texts: formatTexts } };
 }

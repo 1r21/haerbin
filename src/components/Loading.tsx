@@ -1,14 +1,9 @@
-import LoadingSvg from "../assets/loading.svg?component"; 
-
-const style = {
-  display: "flex",
-  height: 400,
-};
+import Image from "next/image";
 
 export default function Loading() {
   return (
-    <div style={style}>
-      <LoadingSvg />
+    <div className="flex justify-center">
+      <Image src="/images/loading.svg" width={150} height={150} />
     </div>
   );
 }
