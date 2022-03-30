@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getNewsById, News, Text, parseText } from "@1r21/youyihe";
+import { getNewsById, News } from "@1r21/api-h5";
+import { Text, parseText } from "@1r21/util";
 
 import Loading from "./Loading";
 
