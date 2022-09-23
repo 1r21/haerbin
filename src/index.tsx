@@ -1,25 +1,26 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 
-const { REACT_APP_API_URL } = process.env;
+const { REACT_APP_API_HOST } = process.env;
 
 const client = new ApolloClient({
-  uri: `${REACT_APP_API_URL}/graphql`,
+  uri: `${REACT_APP_API_HOST}/graphql`,
   cache: new InMemoryCache(),
 });
 
-ReactDOM.render(
+const rootElement = document.getElementById("root")!;
+
+createRoot(rootElement).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
