@@ -1,0 +1,16 @@
+{
+  "name": "haerbin-rescript",
+  "namespace": false,
+  "version": "0.0.1",
+  "sources": {
+    "dir": "src",
+    "subdirs": true
+  },
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".mjs",
+  "reason": { "react-jsx": 3 },
+  "bs-dependencies": ["@rescript/react", "@ryyppy/rescript-promise"]
+}

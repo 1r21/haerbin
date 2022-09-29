@@ -1,4 +1,4 @@
-## A React client for Taishan
+## A React client for Taishan (Rescript implement)
 
 ## dev
 
