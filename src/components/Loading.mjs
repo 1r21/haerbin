@@ -10,13 +10,29 @@ var LoadingSvg = {
 };
 
 function Loading(Props) {
+  var delay = Props.delay;
+  var match = React.useState(function () {
+        return true;
+      });
+  var setDelay = match[1];
+  React.useEffect((function () {
+          setTimeout((function (param) {
+                  setDelay(function (_p) {
+                        return false;
+                      });
+                }), delay);
+        }), []);
   var style = {
     display: "flex",
     height: "400px"
   };
-  return React.createElement("div", {
-              style: style
-            }, React.createElement(make, {}));
+  if (match[0]) {
+    return null;
+  } else {
+    return React.createElement("div", {
+                style: style
+              }, React.createElement(make, {}));
+  }
 }
 
 var make$1 = Loading;

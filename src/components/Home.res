@@ -7,18 +7,18 @@ let make = () => {
 
   React.useEffect0(() => {
     setLoading(._p => true)
-    let _ =
-      Api.getNews()
-      ->then(ret => {
-        setArticles(. _ => ret["list"])
-        setLoading(. _p => false)
-        resolve()
-      })
-      ->catch(err => {
-        Js.log(err)
-        setLoading(. _p => false)
-        resolve()
-      })
+    Api.getNews()
+    ->then(ret => {
+      setArticles(. _ => ret["list"])
+      setLoading(. _p => false)
+      resolve()
+    })
+    ->catch(err => {
+      Js.log(err)
+      setLoading(. _p => false)
+      resolve()
+    })
+    ->ignore
 
     None
   })
@@ -32,7 +32,7 @@ let make = () => {
   <div className="w-9/12 h-full mx-auto">
     {switch loading {
     | false => <ul className="flex flex-wrap"> {React.array(articleContent)} </ul>
-    | true => <Loading />
+    | true => <Loading delay=300 />
     }}
   </div>
 }

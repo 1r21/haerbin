@@ -45,7 +45,9 @@ function Home(Props) {
       });
   return React.createElement("div", {
               className: "w-9/12 h-full mx-auto"
-            }, match[0] ? React.createElement(Loading.make, {}) : React.createElement("ul", {
+            }, match[0] ? React.createElement(Loading.make, {
+                    delay: 300
+                  }) : React.createElement("ul", {
                     className: "flex flex-wrap"
                   }, articleContent));
 }
