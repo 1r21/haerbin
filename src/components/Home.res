@@ -2,13 +2,23 @@ open Promise
 
 @react.component
 let make = () => {
+  let (loading, setLoading) = React.Uncurried.useState(_ => false)
   let (articles, setArticles) = React.Uncurried.useState(_ => [])
 
   React.useEffect0(() => {
-    let _ = Api.getNews()->then(ret => {
-      setArticles(. _ => ret["list"])
-      resolve()
-    })
+    setLoading(._p => true)
+    let _ =
+      Api.getNews()
+      ->then(ret => {
+        setArticles(. _ => ret["list"])
+        setLoading(. _p => false)
+        resolve()
+      })
+      ->catch(err => {
+        Js.log(err)
+        setLoading(. _p => false)
+        resolve()
+      })
 
     None
   })
@@ -20,6 +30,9 @@ let make = () => {
   )
 
   <div className="w-9/12 h-full mx-auto">
-    <ul className="flex flex-wrap"> {React.array(articleContent)} </ul>
+    {switch loading {
+    | false => <ul className="flex flex-wrap"> {React.array(articleContent)} </ul>
+    | true => <Loading />
+    }}
   </div>
 }
