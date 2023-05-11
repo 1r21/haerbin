@@ -7,10 +7,10 @@
   resolved "https://npm.pkg.github.com/download/@1r21/types/0.0.4/1829501d7d6c6fee9373b96c81ebb652405a521b#1829501d7d6c6fee9373b96c81ebb652405a521b"
   integrity sha512-9Tc0fNnm2LTQVHWrVyvazW4bJvsEiolqefAFGvwBaM9NUqp78hADzKENfRAje/VEEaJrXfQn+PhBnDIKVo+RzA==
 
-"@1r21/util@^0.0.8":
-  version "0.0.8"
-  resolved "https://npm.pkg.github.com/download/@1r21/util/0.0.8/b19a834d2d5c0b9c6f706ca0aed0125e4e66132e#b19a834d2d5c0b9c6f706ca0aed0125e4e66132e"
-  integrity sha512-ouqQxavTdBgtiBgQ9Iv+Vj1BfiX+e+PRlV3IPuHum79kb5NWHaylRmXCoO22YFai3QV4VQ3rnsdmk6V9+efzZg==
+"@1r21/util@^0.0.9":
+  version "0.0.9"
+  resolved "https://npm.pkg.github.com/download/@1r21/util/0.0.9/b0d94cfc4acfa09b414623807c319ae17d946527#b0d94cfc4acfa09b414623807c319ae17d946527"
+  integrity sha512-IMNDcoWirP171ZchGu2d/n3NGMUvOk82SggmTFjIB0Dt7HATwqMPXlxwd9aQA3qDWL5EqNc07ZqkHpQrisXxyQ==
 
 "@adobe/css-tools@^4.0.1":
   version "4.0.1"

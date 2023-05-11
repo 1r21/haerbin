@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@1r21/types": "^0.0.4",
-    "@1r21/util": "^0.0.8",
+    "@1r21/util": "^0.0.9",
     "@apollo/client": "^3.6.9",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@testing-library/jest-dom": "^5.16.5",
